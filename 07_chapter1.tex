@@ -44,8 +44,8 @@ There are exactly six, $\{x, x_y, x^y, y_x, y^x, y\}$ where:
     $y = (e_3, e_2 + e_3)$.  
 \end{example}
 
-%%%%%%%%%%%%%%%%%%%%
-\section{Statement of Theorem \ref{thm:hyperconvex-conjugate} and supporting lemmas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statement of Theorem \ref{thm:hyperconvex-conjugate} and related results}
 % TODO definition of hyperconvexity
 We call $\rho, \rho'$ \emph{topologically conjugate} if there exists a homeomorphism 
 $F:\F^3 \rightarrow \F^3$ such that for all $g \in \Gamma$ and all $x \in \F^3$, 
@@ -324,7 +324,13 @@ and either matches or switches the irreducible 0- and 1-dimensional Richardson v
 This completes the proof of Lemma \ref{lem:richardson}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Warnings and caveats}
+\section{Comments}
 
-It is not known whether a topological conjugacy $F$ preserves Richardson varieties for $x,y \in \F^3$.
+\begin{remark}
+    For $x,y \in (\F^3)^{(2)}$, $F$ will not necessarily preserve the 0-dimensional Richardson varieties.
+\end{remark}
 
+\begin{remark}
+    Theorem \ref{thm:hyperconvex-conjugate} applies to virtual hyperbolic surface groups as well, 
+    e.g. $\Gamma = \pi_1(\mathcal{O}^2)$ where $\mathcal{O}^2$ is a hyperbolic 2-orbifold.
+\end{remark}

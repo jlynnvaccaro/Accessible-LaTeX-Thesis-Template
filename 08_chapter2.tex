@@ -1,2 +1,85 @@
-\section{Second main result}
-Another significant theorem.
+%%%%%%%%%%%%%%%%%%
+\section{Notation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statement of Theorem \ref{thm:component} and related results}
+
+\begin{theorem}\label{thm:component}
+    Suppose $\rho,\rho':\Gamma \rightarrow SL_3\C$ in the same Anosov component.
+    Suppose furthermore that $\rho$ and $\rho'$ are irreducible.
+    Then $\rho, \rho'$ are topologically conjugate.
+\end{theorem}
+
+Combined with Theorem \ref{thm:hyperconvex-conjugate}, we get the following corollaries:
+\begin{corollary}
+    All quasi-Hitchin representations are hyperconvex.
+    All quasi-Barbot representations are \emph{not} hyperconvex.
+\end{corollary}
+Furthermore:
+\begin{corollary}
+    The quasi-Hitchin and quasi-Barbot Anosov components are distinct.
+\end{corollary}
+
+But what about the reducible representations? Well, we must be a bit more careful here.
+Consider the reducible Anosov representations $\mathcal{A}_{red}$.
+The connected components are each homeomorphic to Quasi-Fuchsian space.
+\begin{theorem}\label{thm:top-red}
+    There are exactly three topological conjugacy classes of $\mathcal{A}_{red}(\Gamma)$:
+    \begin{itemize}
+        \item $[\rho_{ss}]$
+        \item $[\rho_{line}] = [\rho_{plane}]$
+        \item $[\rho_{dense}]$
+    \end{itemize}
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proof of Theorem \ref{thm:component}}
+
+We use the following result of Florian Stecker:
+\begin{theorem}[TODO REFERENCE]\label{thm:stecker-dod}
+    For all $\rho:\Gamma \rightarrow SL_3\C$ Anosov, 
+    the cocompact domain of discontinuity $\Omega_\rho$ is simply connected.
+\end{theorem}
+
+We use the following result of Dumas and Sanders:
+\begin{theorem}[TODO REFERENCE]\label{thm:ds-diffeo}
+    For all $\rho,\rho'$ in the same Anosov component, then 
+    \begin{align}
+        M_\rho \equiv_{diffeo} M_{\rho'}.
+    \end{align}
+\end{theorem}
+
+\begin{proof}(Theorem \ref{thm:component})
+    Let $\rho,\rho' : \Gamma \rightarrow SL_3\C$ Anosov and in the same component. 
+    We want to show the existence of $F:\F^3 \rightarrow \F^3$ a topological connjugacy of $\rho,\rho'$.
+
+    Then by Thm. \ref{thm:ds-diffeo}, there exists a diffeomorphism 
+    $D : M_\rho \rightarrow M_{\rho'}$.
+    This lifts to a diffeomorphism of the universal cover 
+    $\tilde{D} : \tilde{M_\rho} \rightarrow \tilde{M_{\rho'}}$.
+    But by Prop. \ref{lem:omega-simply-connected}, 
+    the domains of discontinuity $\Omega_\rho$, $\Omega_{\rho'}$ are simply connected,
+    so $\tilde{M_\rho} \equiv \Omega_\rho$ and $\tilde{M_{\rho'}} \equiv \Omega_{\rho'}$.
+    So we can consider $\tilde{D} : \Omega_\rho \rightarrow \Omega_{\rho'}$.
+    
+    Clearly $\tilde{D}$ is a topological conjugacy of $\Omega_\rho$ and $\Omega_{\rho'}$, 
+    since it is a diffeomorphism and for all $f \in \Omega_\rho$ and $g \in \Gamma$ we have
+    $\tilde{D}(\rho(g)\cdot f) = \rho'(g)\cdot \tilde{D}(f)$.
+
+    Next, we want to extend $\tilde{D}$ to a homeomorphism $F: \F^3 \rightarrow \F^3$
+    such that $F|_{\Omega_\rho} \equiv \tilde{D}$.
+    Fortunately, $\Omega_\rho$ is an open, connected dense subset of $\F^3$, 
+    so $\tilde{D}$ has a unique continuous extension to $\F^3$ using sequences in $\Omega_\rho$ which limit to points in $Th(\Gamma)$. 
+
+    We just need to check that $F$ is a topological conjugacy.
+\end{proof}
+
+\begin{remark}
+    The topological conjugacy $F$ may not be unique, 
+    however it is uniquely determined by the choice of 
+    diffeomorphism $D$ and its lift $\tilde{D}$. 
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proof of Theorem \ref{thm:top-red}}
+
