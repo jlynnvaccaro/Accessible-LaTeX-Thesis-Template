@@ -1,20 +1,107 @@
-Here we present the main contributions of the thesis.
+Let $\Gamma$ the fundamental group of a closed hyperbolic surface. 
+Let $\rho, \rho' : \pi_1\Sigma \rightarrow SL_3\C$ Anosov. 
+We use $\xi, \xi' : \partial \Gamma \rightarrow \F^3 $ to mean the continuous, transverse, $\rho$- or $\rho'$- equivariant, dynamics-preserving boundary maps. 
+We use $\Lambda, \Lambda' \subset \F^3$ to mean the limit curves, which are the images of $\xi, \xi'$, respectively.
+We use $Th(\Lambda)$ to refer to the thickened limit curve. We use $Th(x)$ to refer to the thickening of a particular flag $x \in \Lambda$.
 
-\section{A computer simulation}
+We call $\rho, \rho'$ \emph{topologically conjugate} if there exists a homeomorphism $F:\F^3 \rightarrow \F^3$ such that for all $g \in \Gamma$ and all $x \in \F^3$, then $F(\rho(g) \cdot x) = \rho'(g) \cdot F(x)$.
 
-% The following works with LaTeXml.  I consider the result accessible, but it might not be 100% WCAG compliant.
+\begin{theorem}\label{thm:hyperconvex-conjugate}
+    Hyperconvexity is closed under topological conjugacy. In other words, if $\rho$ and $\rho'$ are topologically conjugate, then $\rho$ is hyperconvex if and only if $\rho'$ is hyperconvex.
+\end{theorem}
 
+We assume $F:\F^3\rightarrow \F^3$ is a topological conjugacy between $\rho$ and $\rho'$. 
+Clearly $F(\Lambda) = \Lambda'$. 
+This mapping is pointwise, i.e. for all $\alpha \in \partial \Gamma$, then $F(\xi(\alpha)) = \xi'(\alpha)$. 
+So for $x \in \Lambda$, we can use the notation $x' := F(x) \in \Lambda'$.
 
-\begin{lstlisting}[basicstyle = \singlespacing\ttfamily\small,resetmargins=true,tabsize=5,extendedchars=false]
-def factorial(n):
-    """Compute the factorial of n recursively."""
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
+For any pair of transverse flags $x,y \in \F^3$, consider the irreducible 0-dim Richardson varieties $R^0_{x,y} := \{x, x_y, x^y, y_x, y^x, y\}$. 
+\begin{example}
+    If $x$ and $y$ are the attracting and repelling flags of $diag(2, 1, 0.5)$ then $R^0(x,y)$ consists of:
+    \begin{itemize}
+        \item $x = \{x\} \cap \alpha_{121}(y) = (e_1, e_1 + e_2)$
+        \item $x_y = \alpha_1(x) \cap \alpha_{12}(y) = (e_1, e_1+e_3)$
+        \item $x^y = \alpha_2(x) \cap \alpha_{21}(y) = (e_2, e_1+e_2)$
+        \item $y_x = \alpha_{12}(x) \cap \alpha_1(y) = (e_3, e_1+e_3)$
+        \item $y^x = \alpha_{21}(x) \cap \alpha_2(y) = (e_2, e_2+e_3)$
+        \item $y = \alpha_{121}(x) \cap \{y\} = (e_3, e_2 + e_3)$.
+    \end{itemize}
+\end{example}
 
-print(f"5! = {factorial(5)}")
-\end{lstlisting}
+\begin{lemma}\label{lem:richardson}
+    As a set, $F (R^0_{x,y}) = R^0_{x',y'}$. 
+    
+    However, $F$ may not pointwise preserve the ``type" of Richardson variety.
+    For all $x,y \in Lambda^{(2)}$,
+    \begin{itemize}
+        \item if $F$ \emph{matches} Richardson varieties, then $F(x_y) = x'_{y'}$, $F(x^y) = x'^{y'}$, $F(y_x) = y'_{x'}$, and $F(y^x) = y'^{x'}$.
+        \item if $F$ \emph{switches} Richardson varieties, then $F(x_y) = x'^{y'}$, $F(x^y) = x'_{y'}$, $F(y_x) = y'^{x'}$, and $F(y^x) = y'_{x'}$.
+    \end{itemize}
+\end{lemma}
+As a consequence of the argument in Lemma \ref{lem:richardson}, we also have $F(Th(x)) = Th(x')$ for all $x \in \Lambda$.
 
+\begin{lemma}\label{lem:hyperconvex}
+    The representation $\rho$ is hyperconvex if and only if for all $x,y,z \in \Lambda^{(3)}$, then $R^0_{x,y} \cap R^0_{x,z} = \{x\}$.
+\end{lemma}
 
+\begin{proof}(Theorem \ref{thm:hyperconvex-conjugate})
+    Suppose $F:\F^3 \rightarrow \F^3$ is a topological conjugacy between $\rho$ and $\rho'$.
 
+    We begin with the forward direction. 
+    Assume that $\rho$ is hyperconvex. Let $x,y,z \in \Lambda^{(3)}$.
+    By Lemma \ref{lem:hyperconvex}, then $x_y \neq x_z$ and $x^y \neq x^z$.
+    By Lemma \ref{richardson}, then $\{F(x_y), F(x^y), F(x_z), F(x^z) \} = \{x'_{y'}, x'^{y'}, x'_{z'}, x'^{z'} \}$ are distinct.
+    Since $x,y,z$ were general, then this holds for all triples in $\Lambda$ and $\rho'$ is hyperconvex.
+
+    The other direction proceeds similarly. Assume that $\rho$ is \emph{not} hyperconvex. 
+    By Lemma \ref{lem:hyperconvex}, there exist $x,y,z \in \Lambda^{(3)}$ such that $x_y = x_z$ or $x^y = x^z$. 
+    By Lemma \ref{lem:richardson}, then $F$ either matches or switches Richardson varieties.
+    So one of the following is true: $x'_{y'} = x'_{z'}$ or $x'^{y'}=x'^{z'}$. 
+    Therefore $\rho'$ is \emph{not} hyperconvex.
+\end{proof}
+
+\begin{proof}(Lemma \ref{lem:richardson})
+    Let's describe the dynamics of $\rho(g) \cdot \F^3$, where $g \in \Gamma$ infinite order. 
+    Since $\rho$ is Anosov, then we know $\rho(g)$ is strongly loxodromic, i.e. its eigenvalues have distinct magnitude.
+    That means it has an attracting and repelling fixed boundary points $g^+, g^- \in \partial \Gamma$.
+    Let $x = \xi(g^+), y = \xi(g^-)$. 
+
+    We define the ``uphill'' $U_g(x) := \{f : \rho(g^n) \cdot f \rightarrow x \}$ and ``downhill'' $D_g(y) := \{f : \rho(g^{-n}) \cdot f \rightarrow y\}$.
+    Most flags are in the open and dense set $U_g(x) \cap D_g(y) \subset \F^3$.
+    However, there is an exceptional locus $E_g = \F^3 \setminus (U_g(x) \cap D_g(y))$, i.e. the attracting or repelling flags for $E_g$ are other fixed points under $\rho(g)$.
+    The fixed points of $\rho(g) \cdot \F^3$ are exactly $R^0_{x,y}$.
+
+    These happen to be the irreducible 1-dim Richardson varieties of $x,y$:
+    \begin{itemize}
+        \item $\alpha_1(x) = \alpha_1(x) \cap \alpha_{121}(y) = \overline{U(x) \cap D(x_y)}$
+        \item $\alpha_2(x) = \alpha_2(x) \cap \alpha_{121}(y) = \overline{U(x) \cap D(x^y)}$
+        \item $span(x_y,y_x) = \alpha_{12}(x) \cap \alpha_{12}(y) = \overline{U(x_y) \cap D(y_x)}$
+        \item $span(x^y,y^x) = \alpha_{21}(x) \cap \alpha_{21}(y) = \overline{U(x^y) \cap D(y^x)}$
+        \item $\alpha_1(y) = \alpha_{121}(x) \cap \alpha_1(y) = \overline{U(y_x) \cap D(y)}$
+        \item $\alpha_2(y) = \alpha_{121}(x) \cap \alpha_2(y) = \overline{U(y^x) \cap D(y)}$
+    \end{itemize}
+
+    Claim: $F(Th(x)) = Th(x')$
+
+    Claim: $F(R^0_{x,y}) = R^0_{x',y'}$.
+
+    Claim: $F(R)$
+
+    Claim: $F(R^0_{\rho(h)\cdot x, \rho(h) \cdot y}) = R^0_{\rho'(h)\cdot x', \rho'(h)\cdot y'}$.
+
+    Claim: Pairs of the form $(g^+, g^-)$ are dense in $\partial \Gamma ^2$
+    
+\end{proof}
+
+\begin{proof}(Lemma \ref{lem:hyperconvex})
+    Suppose $\rho$ is Anosov.
+    Let $x = (x_1, x_2),y = (y_1, y_2),z=(z_1, z_2) \in \Lambda^{(3)}$.
+    Since $x,y,z$ are pairwise transverse, then clearly $y_x, y^x, z_x, z^x \not \in R^0_{x,y} \cap R^0_{x,z}$.
+    It suffices to check the pairs $x_y,x_z \in \alpha_1(x)$ and $x^y,x^z \in \alpha_2(x)$.
+    
+    By definition, $x_y = (x_1, x_1 + y_1)$ and $x_z = (x_1, x_1 + z_1)$, which are distinct if and only if $x_1 + y_1 \neq x_1 | z_1$, or equivalently $z_1 \not \subset x_1 + y_1$.
+
+    Similarly, $x^y = (x_2 \cap y_2, x_2)$ and $x^z = (x_2 \cap z_2, x_2)$, which are distinct if and only if $x_2 \cap y_2 \neq x_2 \cap z_2$, or equivalently $x_2 \cap y_2 \not \subset z_2$.
+
+    So clearly $R^0_{x,y} \cap R^0_{x,z} = \{x\}$ for all $x,y,z \in \Lambda^{(3)}$ is equivalent to $\rho$ hyperconvex. 
+\end{proof}
