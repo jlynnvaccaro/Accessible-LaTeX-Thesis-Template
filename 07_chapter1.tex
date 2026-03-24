@@ -1,38 +1,35 @@
-%%%%%%%%%%%%%%%%%%
-\section{Notation}
-(This maybe belongs in an introduction / background section instead.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Richardson varieties}
+TODO: This maybe belongs in an introduction / background section instead.
 
-Let $\Gamma$ the fundamental group of a closed hyperbolic surface. 
-Let $\rho, \rho' : \Gamma \rightarrow SL_3\C$ Anosov. We use the following notation related to $\rho$ and $\rho'$.
-\begin{itemize}
-    \item $\xi, \xi' : \partial \Gamma \rightarrow \F^3 $ refers to the continuous, transverse, $\rho$- or $\rho'$- equivariant, dynamics-preserving boundary maps. 
-    \item $\Lambda, \Lambda' \subset \F^3$ refers to the limit curves, which are the images of $\xi, \xi'$.
-    \item $Th(\Lambda),Th(\Lambda')$ refers to the thickened limit curve. 
-    \item $Th(x),Th(x')$ refer to the thickening of specific flags $x \in \Lambda, x' \in \Lambda'$.
-\end{itemize}
-For any flag $x \in \F^3$, consider the Schubert varieties associated with $x$. 
-We use the notation $x = (l, H)$ where $x_1 \in \CP^2$ and $x_2 \in (\CP^2)^*$ such that $x_1 \subset x_2$.
+For any flag $x \in \F^3$, consider the irreducible Schubert varieties associated with $x$. 
+We use the notation $x = (l, H)$ where $l \in \CP^2$ and $H \in (\CP^2)^*$ such that $x_1 \subset x_2$.
 \begin{itemize}
     \item $\{ x \} = \{ (l, H) \}$,
     \item $\alpha_1(x) = \{ (l, H_l) : l \subset H_l \}$,
     \item $\alpha_2(x) = \{ (l_H, H) : l_H \subset H \}$,
-    \item $\alpha_{12}(x) = \{ (k, H_l) : l, k \subset H_l \}$,
-    \item $\alpha_{21}(x) = \{ (l_H, G) : l_H \subset H, G \}$, and
+    \item $\alpha_{12}(x) = \{ (k, H_l) : l \subset H_l \}$,
+    \item $\alpha_{21}(x) = \{ (l_H, G) : l_H \subset H \}$, and
     \item $\alpha_{121}(x) = \alpha_{212}(x) = \F^3$.
 \end{itemize}
-We call two flags $x,y$ transverse if they are in general position, 
-meaning that for any proper Schubert variety $\alpha$, then $x \not \in \alpha(y)$ and $y \not \in \alpha(x)$.
+We call a pair of flags $x,y \in \F^3$ \emph{transverse} if they are in general position, 
+meaning that for any proper Schubert variety type $\alpha$, 
+then $x \not \in \alpha(y)$ and $y \not \in \alpha(x)$.
 
-For any pair of transverse flags $x,y \in \F^3$, consider the irreducible 0-dimensional Richardson varieties $R^0_{x,y}$. 
-There are exactly six, $\{x, x_y, x^y, y_x, y^x, y\}$ where:
+Let $x,y \in \F^3$ transverse. 
+Define $R^0_{x,y}$ to be their irreducible 0-dimensional Richardson varieties, 
+which are the intersections between irreducible Schubert varieties $\alpha(x) \cap \beta(y)$ 
+where $dim(\alpha) + dim(\beta) = dim(\F^3)$.
+There are exactly six such varieties $\{x, x_y, x^y, y_x, y^x, y\}$, where:
     \begin{itemize}
-        \item $x = \{x\} \cap \alpha_{121}(y)$,
-        \item $x_y = \alpha_1(x) \cap \alpha_{12}(y)$,
-        \item $x^y = \alpha_2(x) \cap \alpha_{21}(y)$,
-        \item $y_x = \alpha_{12}(x) \cap \alpha_1(y)$,
-        \item $y^x = \alpha_{21}(x) \cap \alpha_2(y)$, and
-        \item $y = \alpha_{121}(x) \cap \{y\}$.
+        \item $x := \{x\} \cap \alpha_{121}(y)$,
+        \item $x_y := \alpha_1(x) \cap \alpha_{12}(y)$,
+        \item $x^y := \alpha_2(x) \cap \alpha_{21}(y)$,
+        \item $y_x := \alpha_{12}(x) \cap \alpha_1(y)$,
+        \item $y^x := \alpha_{21}(x) \cap \alpha_2(y)$, and
+        \item $y := \alpha_{121}(x) \cap \{y\}$.
     \end{itemize}
+These are explicit points in the flag variety.
 \begin{example}\label{eg:r0}
     Suppose $x$ and $y$ are the attracting and repelling flags of 
     $\rho(g) = diag(\lambda, \mu, \nu)$ where $|\lambda| > |\mu| > |\nu|$.
@@ -44,38 +41,90 @@ There are exactly six, $\{x, x_y, x^y, y_x, y^x, y\}$ where:
     $y = (e_3, e_2 + e_3)$.  
 \end{example}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Statement of Theorem \ref{thm:hyperconvex-conjugate} and related results}
-% TODO definition of hyperconvexity
+For $x,y \in \F^3$ transverse, 
+define $R^1_{x,y}$ to be irreducible 1-dimensionsal Richardson varieties.
+Similarly, these are intersections of irreducible Schubert varieties 
+$\alpha(x) \cap \beta(y)$ where $dim(\alpha) + dim(\beta) = dim(\F^3) + 1$. 
+There are six such varieties, each homeomorphic to $\CP^1$, 
+which we distinguish using pairs of elements of $R^0_{x,y}$.
+\begin{itemize}
+    \item $span(x, x_y) := \alpha_1(x) \cap \alpha_{121}(y)$,
+    \item $span(x, x^y) := \alpha_2(x) \cap \alpha_{121}(y)$,
+    \item $span(x_y,y_x) := \alpha_{12}(x) \cap \alpha_{12}(y)$,
+    \item $span(x^y,y^x) := \alpha_{21}(x) \cap \alpha_{21}(y)$,
+    \item $span(y_x, y) := \alpha_{121}(x) \cap \alpha_1(y)$, and
+    \item $span(y^x, y) := \alpha_{121}(x) \cap \alpha_2(y)$.
+\end{itemize}
+
+These varieties are not pairwise disjoint, e.g. $\{x\} = span(x,x_y) \cap span(x,x^y)$.
+The points of intersection between 1-dimensional Richardson varieties 
+are the 0-dimensional Richardson varieties. 
+
+\begin{remark} 
+    If $x,y \in \F^3$ transverse and $dim(\alpha)+dim(\beta) < dim(\F^3)$, 
+    then $\alpha(x) \cap \beta(y) = \null$.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Assumptions and notation}
+Let $\Gamma$ the fundamental group of a closed hyperbolic surface. 
+Let $\rho, \rho' : \Gamma \rightarrow SL_3\C$ Anosov. 
+We use the following notation related to $\rho$ and $\rho'$.
+\begin{itemize}
+    \item $\xi, \xi' : \partial \Gamma \rightarrow \F^3 $ refers to the continuous, transverse, 
+    $\rho$- or $\rho'$- equivariant, dynamics-preserving boundary maps. 
+    \item $\Lambda, \Lambda' \subset \F^3$ refers to the limit curves, 
+    which are the images of $\xi, \xi'$.
+    \item $Th(x) = \alpha_1(x) \cup \alpha_2(x)$ refers to the balanced ideal thickening of $x \in \F^3$.
+    \item $Th(\Lambda) = \cup_{x \in \Lambda}Th(x)$ refers to the thickening of the limit curve.     
+\end{itemize}
+
 We call $\rho, \rho'$ \emph{topologically conjugate} if there exists a homeomorphism 
 $F:\F^3 \rightarrow \F^3$ such that for all $g \in \Gamma$ and all $x \in \F^3$, 
 then $F(\rho(g) \cdot x) = \rho'(g) \cdot F(x)$.
 We call $F$ a \emph{topological conjugacy}.
 
+TODO: definition of hyperconvexity
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statement of Theorem \ref{thm:hyperconvex-conjugate} and related results}
+
 \begin{theorem}\label{thm:hyperconvex-conjugate}
-    Hyperconvexity is closed under topological conjugacy. In other words, if $\rho$ and $\rho'$ are topologically conjugate, then $\rho$ is hyperconvex if and only if $\rho'$ is hyperconvex.
+    Hyperconvexity is closed under topological conjugacy. 
+    In other words, if $\rho$ and $\rho'$ are topologically conjugate, 
+    then $\rho$ is hyperconvex if and only if $\rho'$ is hyperconvex.
 \end{theorem}
 
-The proof of this theorem uses two lemmas, in which we assume $F:\F^3\rightarrow \F^3$ is a topological conjugacy between $\rho$ and $\rho'$. 
+We use two supporting lemmas to prove this theorem.
+First, we show that the relative position of 0-dimensional Richardson varieties of 
+$\Lambda$ determines whether $\rho$ is hyperconvex.
+\begin{lemma}\label{lem:hyperconvex}
+    An Anosov representation $\rho$ is hyperconvex \emph{if and only if} 
+    for all $x,y,z \in \Lambda^{(3)}$ we have $R^0_{x,y} \cap R^0_{x,z} = \{x\}$.
+\end{lemma}
+
+For the second lemma, assume that
+$F:\F^3\rightarrow \F^3$ is a topological conjugacy between $\rho$ and $\rho'$. 
 Clearly $F(\Lambda) = \Lambda'$. 
-This mapping is pointwise, i.e. for all $\alpha \in \partial \Gamma$, then $F(\xi(\alpha)) = \xi'(\alpha)$. 
+This mapping is pointwise, i.e. for all $\alpha \in \partial \Gamma$, 
+then $F(\xi(\alpha)) = \xi'(\alpha)$. 
 So for $x \in \Lambda$, we can use the notation $x' := F(x) \in \Lambda'$.
 
-The relative position of 0-dimensional Richardson varieties of $\Lambda$ determines whether $\rho$ is hyperconvex.
-\begin{lemma}\label{lem:hyperconvex}
-    The representation $\rho$ is hyperconvex if and only if for all $x,y,z \in \Lambda^{(3)}$, then $R^0_{x,y} \cap R^0_{x,z} = \{x\}$.
-\end{lemma}
-
-Topological conjugacies preserve the 0-dimensional Richardson varieties, almost point-by-point.
+Topological conjugacies may preserve the 0- and 1-dimensional Richardson varieties of 
+$\Lambda$ in one of two ways. 
+We say $F$ \emph{matches} the Richardson varieties if for all $x,y\in \Lambda^{(2)}$, 
+then $F(x_y) = x'_{y'}$ and $F(span(x,x_y)) = span(x,x'_{y'})$.
+We say $F$ \emph{switches} the Richardson varieties if for all $x,y \in \Lambda^{(2)}$, 
+then $F(x_y) = x'^{y'}$ and $F(span(x,x_y)) = span(x,x'^{y'})$.
 \begin{lemma}\label{lem:richardson}
-    For all x,y \in \Lambda^{(2)}, $F$ sends $R^0_{x,y}$ to $R^0_{x',y'}$.
-    \begin{itemize}
-        \item If $F$ \emph{matches} Richardson varieties, then $F(x_y) = x'_{y'}$, $F(x^y) = x'^{y'}$.
-        \item If $F$ \emph{switches} Richardson varieties, then $F(x_y) = x'^{y'}$, $F(x^y) = x'_{y'}$.
-    \end{itemize}
+    For all $x,y \in \Lambda^{(2)}$, 
+    then $F (R^0_{x,y}) = R^0_{x',y'}$ 
+    and $F (R^1_{x,y}) = R^1_{x',y'}$.
+    Furthermore, $F$ either matches or switches the Richardson varieties.
 \end{lemma}
 
-As a consequence of the argument in Lemma \ref{lem:richardson}, we also have the following result:
+We also have the following consequence of Lemma \ref{lem:richardson}, 
+which is of independent interest:
 \begin{corollary}\label{cor:thick}
     For all $x \in \Lambda$, then $F(Th(x)) = Th(x')$.
 \end{corollary}
@@ -90,115 +139,148 @@ We first prove our main theorem using our supporting lemmas.
     We begin with the forward direction. 
     Assume that $\rho$ is hyperconvex. Let $x,y,z \in \Lambda^{(3)}$.
     By Lemma \ref{lem:hyperconvex}, then $x_y \neq x_z$ and $x^y \neq x^z$.
-    By Lemma \ref{lem:richardson}, then $\{F(x_y), F(x^y), F(x_z), F(x^z) \} = \{x'_{y'}, x'^{y'}, x'_{z'}, x'^{z'} \}$ are distinct.
-    Since $x,y,z$ were general, then this holds for all triples in $\Lambda$ and $\rho'$ is hyperconvex.
+    By Lemma \ref{lem:richardson}, then the sets
+    \begin{align}
+        \{F(x_y), F(x^y), F(x_z), F(x^z) \} = \{x'_{y'}, x'^{y'}, x'_{z'}, x'^{z'} \}
+    \end{align} contain four distinct points.
+    Since $x,y,z$ were general, then this holds for all triples in $\Lambda$, 
+    and $\rho'$ is hyperconvex.
 
     The other direction proceeds similarly. Assume that $\rho$ is \emph{not} hyperconvex. 
-    By Lemma \ref{lem:hyperconvex}, there exist $x,y,z \in \Lambda^{(3)}$ such that $x_y = x_z$ or $x^y = x^z$. 
+    By Lemma \ref{lem:hyperconvex}, there exist $x,y,z \in \Lambda^{(3)}$ such that 
+    $x_y = x_z$ or $x^y = x^z$. 
     By Lemma \ref{lem:richardson}, then $F$ either matches or switches Richardson varieties.
     So one of the following is true: $x'_{y'} = x'_{z'}$ or $x'^{y'}=x'^{z'}$. 
     Therefore $\rho'$ is \emph{not} hyperconvex.
 \end{proof}
-We also prove our lemma linking Richardson varieties to hyperconvexity.
+We also prove our lemma linking Richardson 0-dimensional varieties to hyperconvexity.
 \begin{proof}(Lemma \ref{lem:hyperconvex})
     Suppose $\rho$ is Anosov.
-    Let $x = (x_1, x_2),y = (y_1, y_2),z=(z_1, z_2) \in \Lambda^{(3)}$.
-    Since $x,y,z$ are pairwise transverse, then $y_x, y^x, z_x, z^x \not \in R^0_{x,y} \cap R^0_{x,z}$.
+    Let $x = (l_x, H_x),y = (l_y, H_y),z=(l_z, H_z) \in \Lambda^{(3)}$.
+    Since $x,y,z$ are pairwise transverse, then 
+    \begin{align}
+        y_x, y^x, z_x, z^x \not \in R^0_{x,y} \cap R^0_{x,z}.
+    \end{align}
     It suffices to check the pairs $x_y,x_z \in \alpha_1(x)$ and $x^y,x^z \in \alpha_2(x)$.
     
-    By definition, $x_y = (x_1, x_1 + y_1)$ and $x_z = (x_1, x_1 + z_1)$, which are distinct if and only if $x_1 + y_1 \neq x_1 + z_1$, or equivalently $z_1 \not \subset x_1 + y_1$.
+    By definition, $x_y = (l_x, l_x + l_y)$ and $x_z = (l_x, l_x + l_z)$, 
+    which are distinct if and only if $l_x + l_y \neq l_x + l_z$, 
+    or equivalently if and only if $l_z \not \subset l_x + l_y$.
 
-    Similarly, $x^y = (x_2 \cap y_2, x_2)$ and $x^z = (x_2 \cap z_2, x_2)$, which are distinct if and only if $x_2 \cap y_2 \neq x_2 \cap z_2$, or equivalently $x_2 \cap y_2 \not \subset z_2$.
+    Similarly, $x^y = (H_x \cap H_y, H_x)$ and $x^z = (H_x \cap H_z, H_x)$, 
+    which are distinct if and only if $H_x \cap H_y \neq H_x \cap H_z$, 
+    or equivalently if and only if $H_x \cap H_y \not \subset H_z$.
 
-    So $R^0_{x,y} \cap R^0_{x,z} = \{x\}$ for all $x,y,z \in \Lambda^{(3)}$ is equivalent to $\rho$ hyperconvex. 
+    So $R^0_{x,y} \cap R^0_{x,z} = \{x\}$ for all $x,y,z \in \Lambda^{(3)}$ 
+    is equivalent to $\rho$ hyperconvex. 
 \end{proof}
-The remainder of this chapter is devoted to the proof of Lemma \ref{lem:richardson}.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Action of $\rho(g)$ on $F^3$}
+The remainder of this chapter is devoted to the proof of Lemma \ref{lem:richardson}.
 
-We describe the dynamics of $\rho(g) \cdot \F^3$, where $g \in \Gamma$ infinite order. 
-Since $\rho$ is Anosov, then we know $\rho(g)$ is strongly loxodromic, i.e. its eigenvalues have distinct magnitude.
-That means it has an attracting and repelling fixed boundary points $g^+, g^- \in \partial \Gamma$.
-Let $x = \xi(g^+)$ and $y = \xi(g^-)$. 
+In this section we describe the action of $\rho(g)$ on $\F^3$ for $g \in \Gamma$ infinite order. 
+Since $\rho$ is Anosov, then $\rho(g)$ is strongly loxodromic, 
+i.e. its eigenvalues have distinct magnitude.
+That means $\rho(g)$ has attracting and repelling limit curve points 
+$x = \xi(g^+)$ and $y = \xi(g^-)$, respectively. 
 
-Under $\rho(g)$, most of $\F^3$ is attracted to $x$ and repelled by $y$. 
-We define the \emph{uphill of $x$} as the subset attracted to $x$ under $\rho(g)$:
+Under the action $\rho(g)$, most of $\F^3$ is attracted to $x$ and repelled by $y$. 
+We define the \emph{uphill} of $x$ as the subset attracted to $x$ under $\rho(g)$:
 \begin{align}
     U_{\rho(g)}(x) := \{f \in F^3 : \rho(g^n) \cdot f \rightarrow x \}.
 \end{align} 
-Similarly, we define the \emph{downhill of $y$} as the subset repelled by $y$ under $\rho(g)$:
+Similarly, we define the \emph{downhill} of $y$ as the subset repelled by $y$ under $\rho(g)$, 
+or equivalently the subset attracted by $y$ under $\rho(g^{-1})$:
 \begin{align}
-    D_{\rho(g)}(y) := \{f \in \F^3 : \rho(g^{-n}) \cdot f \rightarrow y\}.
+    D_{\rho(g)}(y) = U_{rho(g^{-1})}(y):= \{f \in \F^3 : \rho(g^{-n}) \cdot f \rightarrow y\}.
 \end{align}
-Finally, we define the \emph{exceptional set} as the points not attracted to $x$ or not repelled by $y$ under $\rho(g)$:
+We then define the \emph{exceptional set} of $\rho(g)$ as the subset 
+\emph{not} attracted to $x$ or \emph{not} repelled by $y$ under $\rho(g)$:
 \begin{align}
     E_{\rho(g)} = \F^3 \setminus (U_{\rho(g)}(x) \cap D_{\rho(g)}(y)).
 \end{align}
 
-The set $E_{\rho(g)}$ is nonempty, since it contains $x$ and $y$, and closed, 
-since it is complement of an open set. 
-It also contains the other fixed points of $\rho(g) \cdot \F^3$, 
-which are precisely $R^0_{x,y}$.
-(This is straightforward to verify in Example \ref{eg:r0}, 
-which is generic because up to conjugation $\rho(g) = diag(\lambda, \mu, \nu)$.)
+The set $E_{\rho(g)}$ is nonempty and closed, since it is complement of an open set. 
+It contains the fixed points of $\rho(g) \cdot \F^3$, which are precisely $R^0_{x,y}$.
+It suffices to show this for $x,y,\rho(g)$ as in Example \ref{eg:r0}, 
+since up to conjugation $\rho(g) = diag(\lambda, \mu, \nu)$.
 
-We can describe subsets of $E_{\rho(g)}$ explicitly by their attracting and repelling fixed point.
-These subsets are the irreducible 1-dimensional Richardson varieties $R^1_{x,y}$:
+We can partition $E_{\rho(g)}$ using each element's attracting and repelling fixed points.
+By taking the closure of these subsets, we recover the 1-dimensional Richardson varieties $R^1_{x,y}$.
 \begin{itemize}
-    \item $span(x, x_y) = \alpha_1(x) = \alpha_1(x) \cap \alpha_{121}(y) = \overline{U(x) \cap D(x_y)}$
-    \item $span(x, x^y) = \alpha_2(x) = \alpha_2(x) \cap \alpha_{121}(y) = \overline{U(x) \cap D(x^y)}$
-    \item $span(x_y,y_x) = \alpha_{12}(x) \cap \alpha_{12}(y) = \overline{U(x_y) \cap D(y_x)}$
-    \item $span(x^y,y^x) = \alpha_{21}(x) \cap \alpha_{21}(y) = \overline{U(x^y) \cap D(y^x)}$
-    \item $span(y_x, y) = \alpha_1(y) = \alpha_{121}(x) \cap \alpha_1(y) = \overline{U(y_x) \cap D(y)}$
-    \item $span(y^x, y) = \alpha_2(y) = \alpha_{121}(x) \cap \alpha_2(y) = \overline{U(y^x) \cap D(y)}$
+    \item $span(x, x_y) = \alpha_1(x) = \overline{U(x) \cap D(x_y)}$
+    \item $span(x, x^y) = \alpha_2(x) = \overline{U(x) \cap D(x^y)}$
+    \item $span(x_y,y_x) = \overline{U(x_y) \cap D(y_x)}$
+    \item $span(x^y,y^x) = \overline{U(x^y) \cap D(y^x)}$
+    \item $span(y_x, y) = \alpha_1(y) = \overline{U(y_x) \cap D(y)}$
+    \item $span(y^x, y) = \alpha_2(y) = \overline{U(y^x) \cap D(y)}$
 \end{itemize}
-
-These varieties are not disjoint, e.g. $\{x\} = span(x,x_y) \cap span(x,x^y)$, 
-but the points of intersection are exactly the 0-dimensional Richardson varieties.
 So $E_{\rho(g)}$ is homeomorphic to the union of six copies of $\CP^1$, 
 each identified with two neighbors in a cyclic order $(x, x_y, y_x, y, y^x, x^y)$.
 
-For the following results, let $F:\F^3 \rightarrow \F^3$ be a topological conjugacy between 
+% TODO add a figure showing the 0- and 1- dimensional richardson varieties of x,y
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$F$ preserves Richardson 0- and 1-varieties of $\xi(g^+), \xi(g^-)$}
+
+Assume $F:\F^3 \rightarrow \F^3$ is a topological conjugacy between 
 $\rho,\rho':\Gamma \rightarrow SL_3\C$. 
 We use the notation $x' = F(x), y' = F(y)$.
+
+We first consider the attracting and repelling flags for an infinite order element $g \in \Gamma$.
 \begin{proposition}\label{prop:x_y}
-     Let $g \in \Gamma$, and suppose $x = \xi(g^+), y = \xi(g^-)$.
-     Then $F(x_y) \in \{x'_{y'} , x'^{y'}\}$.
+    Let $x,y \in \Lambda$ such that $x=\xi(g^+)$ and $y = \xi(g^-)$. 
+    Then all of the following are true:
+    \begin{enumerate}
+    \item \label{item:0-dim} $F (R^0_{x,y}) = R^0_{x',y'}$,  
+    \item \label{item:1-dim} $F (R^1_{x,y}) = R^1_{x',y'}$, and 
+    \item \label{item:match-switch} $F$ either matches or switches the 
+    Richardson varieties of $x$ and $y$.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-    Let $S : S^1 \rightarrow E_{\rho(g)}$ continuous and injective such that it passes through 
-    $(x,x_y,y_x,y,y^x,x^y)$ in cyclic order.
-    Without loss of generality, we may assume $S(0) = x$, $S(\pi/3) = x_y$, etc.
-    Since $F$ is a topological conjugacy, then it must preserve the exceptional set, 
-    i.e. $F(E_{\rho(g)}) = E_{\rho'(g)}$.
+    Since $F$ is a topological conjugacy, 
+    it must preserve the exceptional set of $\rho(g)$, 
+    so $F(E_{\rho(g)}) = E_{\rho'(g)}$. 
+    Similarly, since $F$ preserves the limit curve pointwise, 
+    then $F(x) = x'$ and $F(y) = y'$.
 
-    Then $F \cdot S : S^1 \rightarrow E_{\rho'(g)}$ is also injective. 
-    We also know $F \cdot S(0) = x'$ and $F \cdot S(\pi) = y'$. 
-    So by injectivity and the cyclic order of $R^0_{x',y'}$ in $E_{\rho'(g)}$, 
-    then either $F\cdot S(\pi/3) = x'_{y'}$ or $F\cdot S(\pi/3) = x'^{y'}$.
-    The remaining points $F\cdot S(n\pi/3)$ 
-    where $n \in \{2,4,5\}$ are determined by this choice as well.
+    Since $F|_{E_{\rho(g)}}$ is a homeomorphism, it sends 1-varieties to 1-varieties,
+    and sends intersections of elements of $R^1_{x,y}$ to intersections of elements of $R^1_{x',y'}$.
+    This proves (\ref{item:0-dim}) and (\ref{item:1-dim}).
+
+    To prove (\ref{item:match-switch}), we observe that: 
+    \begin{align}
+        F(x) 
+        &= F(span(x,x_y) \cap span(x,x^y)) \\
+        &= F(span(x,x_y)) \cap F(span(x,x^y)) \\
+        &= span(x',x'_{y'}) \cap span(x',x'^{y'}) \\
+        &= x'. 
+    \end{align}
+    So we conclude that either $F(x_y) = x'_{y'}$ and $F(span(x,x_y))=span(x', x'_{y'})$, 
+    or $F(x_y) = x'^{y'}$ and $F(span(x,x_y))=span(x', x'^{y'})$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$F$ preserves Richardson varieties of $\Lambda$}
+\section{$F$ preserves Richardson 0-varieties of $\Lambda$}
 
-In this section, we still assume $F:\F^3 \rightarrow \F^3$ is a topological conjugacy 
-between $\rho,\rho'$.
-We extend our argument from fixed points of infinite order words in $\Gamma$ to generic 
-Richardson varieties in $\Lambda$.
+In this section, we still assume $F:\F^3 \rightarrow \F^3$ 
+is a topological conjugacy between $\rho,\rho'$.
+We extend our argument from the Richardson 0-varieties of pairs $\xi(g^+), \xi(g^-)$ 
+to the Richardson 0-varieties of all distinct pairs in $\Lambda$.
 
-First, we extend Proposition \ref{prop:x_y} to Richardson varieties of the form $x_z$ where 
+First, we extend Proposition \ref{prop:x_y} to Richardson varieties of pairs $x, z$ where 
 $x$ is the attracting fixed point of an infinite order element $g \in \Gamma$ and 
-$z$ is a generic point on $\Lambda$.
+$z$ is a (distinct) generic point on $\Lambda$.
 \begin{proposition}\label{prop:x_z}
-    Let $g \in \Gamma$ infinite order, and define $x := \xi(g^+)$. Let $z \in \Lambda \setminus \{x\}$. 
+    Let $g \in \Gamma$ infinite order, and define $x := \xi(g^+)$. 
+    Let $z \in \Lambda \setminus \{x\}$. 
     Then $F(x_z) \in \{x'_{z'}, x'^{z'}\}$. 
 \end{proposition}
 We use the following result from group theory:
-\begin{remark}\label{rmk:qgeo}
+\begin{remark}[TODO REFERENCE]\label{rmk:qgeo}
     Let $\Gamma$ hyperbolic with boundary $\partial \Gamma \equiv S^1$, 
     and let $x,z \in \partial \Gamma$. 
     Then there exists a quasigeodesic sequence $\{g_i\}_{i=1} \in \Gamma^\N$ 
@@ -212,41 +294,42 @@ We use the following result from group theory:
     \end{align}
 \end{remark}
 \begin{proof}(Proposition \ref{prop:x_z})
-    If $z = \xi(g^-)$ then we are done, so assume not. Set $y = \xi(g^-)$.
+    If $z = \xi(g^-)$ then we are done by Prop \ref{prop:x_y}, so assume not. 
+    Set $y := \xi(g^-)$.
 
     Let $\{g_i\}_{i=1} \in \Gamma^\N$ as in Rem. \ref{rmk:qgeo}, 
     such that $\lim_{i=1}\rho(g_i)\cdot y = z$ and $\\lim_{i=1}\rho(g_i)\cdot x = x$. 
     Let $x_i := \rho(g_i) \cdot x$ and $y_i := \rho(g_i) \cdot y$,
     and let $x'_i := F(x_i), y'_i := F(y_i)$.
 
-    By Prop. \ref{prop:x_y-g} then for all $i \in \N$ we have 
+    By Prop. \ref{prop:x_y} then for all $i \in \N$ we have 
     $F(x_i_{y_i}) \in \{ x'_i_{y'_i}, x'_i^{y'_i} \}$.
     Clearly $\lim_{i\rightarrow \infty} x_i _{y_i} = x_z$, 
     $\lim_{i\rightarrow \infty}x'_i = x'$ and $\lim_{i\rightarrow \infty}y'_i = z'$. 
     By continuity of $F$ and compactness of $\F^3$, then 
     \begin{align}
-        F(x_z) &= F(\lim_{i \rightarrow \infty} x_i_{y_i}) \\
+        F(x_z) 
+        &= F(\lim_{i \rightarrow \infty} x_i_{y_i}) \\
         &= \lim_{i \rightarrow \infty} F(x_i_{y_i}) \\
         &\in \{\lim_{i \rightarrow \infty} x'_i_{y'_i}, \lim_{i\rightarrow\infty}x'_i^{y'_i} \} \\
         &= \{ x'_{z'}, x'^{z'} \}.
     \end{align}
 \end{proof}
 
-Next, we extend Proposition \ref{prop:x_z} to Richardson varieties of the form $w_z$ where 
-both $w$ and $z$ are generic points of $\Lambda$.
+Next, we extend Proposition \ref{prop:x_z} to Richardson varieties of the form $w_z$ 
+where both $w$ and $z$ are generic points of $\Lambda$.
 \begin{proposition}\label{prop:w_z}
-    For all $w,z \in \partial \Gamma^{(2)}$, 
+    For all $w,z \in \Lambda^{(2)}$, 
     then $F(w_z) \in \{w'_{z'}, w'^{z'}\}$. 
 \end{proposition}
 \begin{proof}
-    Let $w,z \in \Lambda$. 
     If $w$ is the attracting fixed point of an infinite order element, 
     we are done by Prop \ref{prop:x_z}, so assume not.
     
     Let $\{x_i\}_{i=1} \in \Lambda^\N$ such that each $x_i = \xi(g_i)$ the 
     attracting fixed point of an infinite order word, and $\lim_{i\rightarrow \infty} x_i = w$.
     This sequence exists because attracting fixed points of $\rho(g)$
-     (where $g$ infinite order) are dense in $\Lambda$.
+     (for $g\in \Gamma$ infinite order) are dense in $\Lambda$.
     Define $x'_i = F(x_i)$. By continuity of $F$, we have
     \begin{align}
         F(w) 
@@ -266,14 +349,17 @@ both $w$ and $z$ are generic points of $\Lambda$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$F$ matches or switches Richardson varieties}
+\section{$F$ preserves Richardson 1-varieties of $\Lambda$}
 
-In this section, we highlight how $F$ preserves the 
-balanced ideal thickening centered at each point $x \in \Lambda$.  
+In this section, we highlight how $F$ preserves the Richardson 1-varieties of $\Lambda$, 
+in particular the balanced ideal thickening centered at each point $x \in \Lambda$.
+% TODO Cleanup this argument later
+
 Observe that $Th(x) = \alpha_1(x) \cup \alpha_2(x) = span(x,x_y) \cup span(x,x^y)$ 
 for some $y \in \Lambda \setminus \{x\}$. 
 \begin{proof}(Corollary \ref{cor:thick})
     By Prop. \ref{prop:x_y}, $\{F(x_y), F(x), F(x^y)\} = \{x'_{y'}, x, x'^{y'}\}$.
+    Also, 
     Observe that $F$ is a homeomorphism that preserves dynamics in that 
     $F(U_{\rho(g)}) = U_{\rho'(g)}$ and $F(D_{\rho(g)}) = D_{\rho'(g)}$. 
     So then 
@@ -283,12 +369,12 @@ for some $y \in \Lambda \setminus \{x\}$.
         &= Th(x').
     \end{align}
 \end{proof}
-We also show that $F$ either \emph{matches} or \emph{switches} Richardson varieties, 
-meaning that it either sends preserves $\alpha_1$ for each $x \in \Lambda$, or swaps it with $\alpha_2$.
+If $F$ \emph{matches} Richardson varieties, 
+then for all $x \in \Lambda$ we have $F(x_y) = x'_{y'}$ and $F(\alpha_1(x)) = \alpha_1(x')$. 
+Otherwise, if $F$ \emph{switches} Richardson varieties,
+then for all $x \in \Lambda$ we have $F(x_y) = x'^{y'}$ and $F(\alpha_1(x)) = \alpha_2(x')$.
 \begin{corollary}
-    If for some $w \in \Lambda$ we have $F(\alpha_1(w)) = \alpha_1(w')$, 
-    then for all $z \in \Lambda$ we have $F(\alpha_1(z)) = \alpha_1(z')$. 
-    That is, $F$ either \emph{matches} or \emph{switches} Richardson varieties.
+    $F$ either matches of switches Richardson varieties.
 \end{corollary}
 \begin{proof}
     Suppose for some $w \in \Lambda$ we have $F(\alpha_1(w)) = \alpha_1(w')$. 
