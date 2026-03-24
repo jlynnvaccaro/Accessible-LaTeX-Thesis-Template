@@ -20,10 +20,8 @@ Furthermore:
     The quasi-Hitchin and quasi-Barbot Anosov components are distinct.
 \end{corollary}
 
-But what about the reducible representations? Well, we must be a bit more careful here.
-Consider the reducible Anosov representations $\mathcal{A}_{red}$.
-The connected components are each homeomorphic to Quasi-Fuchsian space.
-\begin{theorem}\label{thm:top-red}
+We also consider the topological conjugacies of reducible representations $\mathcal{A}_{red}$.
+\begin{theorem}\label{thm:reducible}
     There are exactly three topological conjugacy classes of $\mathcal{A}_{red}(\Gamma)$:
     \begin{itemize}
         \item $[\rho_{ss}]$
@@ -32,32 +30,73 @@ The connected components are each homeomorphic to Quasi-Fuchsian space.
     \end{itemize}
 \end{theorem}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proof of Theorem \ref{thm:component}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Key ingredients}
 
-We use the following result of Florian Stecker:
-\begin{theorem}[TODO REFERENCE]\label{thm:stecker-dod}
-    For all $\rho:\Gamma \rightarrow SL_3\C$ Anosov, 
-    the cocompact domain of discontinuity $\Omega_\rho$ is simply connected.
-\end{theorem}
-
-We use the following result of Dumas and Sanders:
-\begin{theorem}[TODO REFERENCE]\label{thm:ds-diffeo}
-    For all $\rho,\rho'$ in the same Anosov component, then 
+In this section, we highlight some key results that will 
+be used in the proof of Theorem \ref{thm:component}.
+First, we use the following theorem of Stecker:
+\begin{theorem}[\ref{Stecker22}, Thm 3.24]\label{thm:stecker-dod}
+    Let $\rho:\Gamma \rightarrow G$ Borel Anosov. 
+    If $dim(\Lambda) \leq mbic(G) - 2$, then every non-empty 
+    cocompact domain of discontinuity in $\F^3$ is dense and connected,
+    and there is a bijection:
     \begin{align}
-        M_\rho \equiv_{diffeo} M_{\rho'}.
+        \{ \text{balanced ideals in } W(G)\} \leftrightarrow \{\text{nonempty cocompact domains of discontinuity in }\F(G)\}
     \end{align}
 \end{theorem}
 
+We tailor Stecker's theorem to our assumptions.
+Recall that $G=SL_3\C$, so $mbic(G)=4$ and $\F(G) = \F^3$.
+Then $W(G) = A_2$ which has exactly one balanced ideal. 
+In $SL_3\C$, all Anosov representations are Borel Anosov.
+Furthermore, we assume that $\Gamma$ is a hyperbolic surface group, so $\partial \Gamma \cong S^1$.
+Then $dim(\Lambda_\rho) \leq mbic(G) - 2 = 2$ and the condition in Theorem \ref{thm:stecker-dod} is met.
+\begin{remark}
+    For $\Gamma$ a hyperbolic surface group and $\rho:\Gamma \rightarrow SL_3\C$ Anosov,
+    then $\Omega_\rho$ is the unique nonempty cocompact domain of discontinuity.
+    Furthermore, $\Omega_rho$ is connected and dense in $\F^3$.
+\end{remark}
+
+We also use the following lemma, proved in section
+\begin{lemma}\label{lem:pi1-dod}
+    For $\Gamma$ a hyperbolic surface group and $\rho:\Gamma \rightarrow SL_3\C$ Anosov,
+    then $\Omega_\rho$ is simply connected.
+\end{lemma}
+
+Finally, we use the following theorem of Dumas and Sanders:
+\begin{theorem}[\ref{DS17}, Thm 5.1]\label{thm:ds-diffeo}
+    Let $(P,Q)$ be parabolic subgroups of $G$, with $P$ symmetric, 
+    and let $I \subset W(G)$ be a balanced ideal of type $(P,Q)$.
+    Let $\rho:\Gamma \rightarrow G$ be a $P$-Anosov representation. 
+    Then for any $\rho' \in \mathcal{A}(\rho,P)$, 
+    the quotient manifolds $M^I_\rho$ and $M^I_{\rho'}$ are diffeomorphic. 
+\end{theorem}
+
+Again, we tailor this theorem to our assumptions that $G = SL_3\C$,
+where there is only one balanced ideal and one .
+\begin{remark}
+    For $\Gamma$ a hyperbolic surface group 
+    and $\rho,\rho':\Gamma \rightarrow SL_3\C$ in the same Anosov component,
+    then 
+    \begin{align}
+        M_\rho \equiv_{diffeo} M_{\rho'}.
+    \end{align}
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proof of Theorem \ref{thm:component}}
+
 \begin{proof}(Theorem \ref{thm:component})
-    Let $\rho,\rho' : \Gamma \rightarrow SL_3\C$ Anosov and in the same component. 
-    We want to show the existence of $F:\F^3 \rightarrow \F^3$ a topological connjugacy of $\rho,\rho'$.
+    Let $\rho,\rho' : \Gamma \rightarrow SL_3\C$ irreducible and in the same Anosov component.
+    We want to show the existence of $F:\F^3 \rightarrow \F^3$ 
+    a topological connjugacy of $\rho,\rho'$.
 
     Then by Thm. \ref{thm:ds-diffeo}, there exists a diffeomorphism 
     $D : M_\rho \rightarrow M_{\rho'}$.
     This lifts to a diffeomorphism of the universal cover 
     $\tilde{D} : \tilde{M_\rho} \rightarrow \tilde{M_{\rho'}}$.
-    Then by Thm. \ref{thm:stecker-dod}, 
+    Then by Lemma \ref{lem:pi1-dod}, 
     the domains of discontinuity $\Omega_\rho$, $\Omega_{\rho'}$ are simply connected,
     so $\tilde{M_\rho} \equiv \Omega_\rho$ and $\tilde{M_{\rho'}} \equiv \Omega_{\rho'}$.
     So we can consider $\tilde{D} : \Omega_\rho \rightarrow \Omega_{\rho'}$.
@@ -68,18 +107,23 @@ We use the following result of Dumas and Sanders:
 
     Next, we want to extend $\tilde{D}$ to a homeomorphism $F: \F^3 \rightarrow \F^3$
     such that $F|_{\Omega_\rho} \equiv \tilde{D}$.
-    Fortunately, $\Omega_\rho$ is an open, connected dense subset of $\F^3$, 
-    so $\tilde{D}$ has a unique continuous extension to $\F^3$ using sequences in $\Omega_\rho$ which limit to points in $Th(\Gamma)$. 
+    By Theorem \ref{thm:stecker-dod},
+    $\Omega_\rho$ is an open, connected dense subset of $\F^3$, 
+    so $\tilde{D}$ has a unique continuous extension to $\F^3$
+    using sequences in $\Omega_\rho$ which limit to points in $Th(\Gamma)$. 
 
-    We just need to check that $F$ is a topological conjugacy.
+    TODO check thet $F$ is a topological conjugacy.
+    TODO where do we use irreducible?
 \end{proof}
 
 \begin{remark}
     The topological conjugacy $F$ may not be unique, 
-    however it is uniquely determined by the choice of 
-    diffeomorphism $D$ and its lift $\tilde{D}$. 
+    however it is uniquely determined by the choice of
+    the diffeomorphism $D$ and its lift $\tilde{D}$. 
 \end{remark}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proof of Theorem \ref{thm:top-red}}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Topological conjugacies of reducible representations}
+This section contains the proof of Theorem \ref{thm:reducible}
