@@ -1,24 +1,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Richardson varieties}
+\section{Richardson varieties in $\F^3$}
 TODO: This maybe belongs in an introduction / background section instead.
 
-For any flag $x \in \F^3$, consider the irreducible Schubert varieties associated with $x$. 
-We use the notation $x = (l, H)$ where $l \in \CP^2$ and $H \in (\CP^2)^*$ such that $x_1 \subset x_2$.
+For any flag $x \in \F^3$, we define $Sch(x)$ the principle Schubert varieties associated with $x$. 
+Let $x = (l, H)$ where $l \in \CP^2$ and $H \in (\CP^2)^*$ such that $l_x \subset H_x$.
+We distinguish the elements of $Sch(x)$ using elements of the Weyl group $W(SL_3\C)$ as follows:
 \begin{itemize}
-    \item $\{ x \} = \{ (l, H) \}$,
+    \item $\alpha_{Id}(x) = \{ (l, H) \} = \{x\}$,
     \item $\alpha_1(x) = \{ (l, H_l) : l \subset H_l \}$,
     \item $\alpha_2(x) = \{ (l_H, H) : l_H \subset H \}$,
     \item $\alpha_{12}(x) = \{ (k, H_l) : l \subset H_l \}$,
     \item $\alpha_{21}(x) = \{ (l_H, G) : l_H \subset H \}$, and
     \item $\alpha_{121}(x) = \alpha_{212}(x) = \F^3$.
 \end{itemize}
+The principle Schubert varieties are closed, and have complex dimensions $(0,1,1,2,2,3)$, respectively.
+
 We call a pair of flags $x,y \in \F^3$ \emph{transverse} if they are in general position, 
-meaning that for any proper Schubert variety type $\alpha$, 
+meaning that for any proper, principle Schubert variety $\alpha$, 
 then $x \not \in \alpha(y)$ and $y \not \in \alpha(x)$.
 
 Let $x,y \in \F^3$ transverse. 
 Define $R^0_{x,y}$ to be their irreducible 0-dimensional Richardson varieties, 
-which are the intersections between irreducible Schubert varieties $\alpha(x) \cap \beta(y)$ 
+which are the intersections between principle Schubert varieties $\alpha(x) \cap \beta(y)$ 
 where $dim(\alpha) + dim(\beta) = dim(\F^3)$.
 There are exactly six such varieties $\{x, x_y, x^y, y_x, y^x, y\}$, where:
     \begin{itemize}
@@ -29,11 +32,12 @@ There are exactly six such varieties $\{x, x_y, x^y, y_x, y^x, y\}$, where:
         \item $y^x := \alpha_{21}(x) \cap \alpha_2(y)$, and
         \item $y := \alpha_{121}(x) \cap \{y\}$.
     \end{itemize}
-These are explicit points in the flag variety.
+Given two tranverse flags, the Richardson 0-varieties can be computed explicitly:
 \begin{example}\label{eg:r0}
-    Suppose $x$ and $y$ are the attracting and repelling flags of 
+    Choose $x$ and $y$ are the attracting and repelling flags of 
     $\rho(g) = diag(\lambda, \mu, \nu)$ where $|\lambda| > |\mu| > |\nu|$.
-    Then $x = (e_1, e_1 + e_2)$, 
+    Then the six Richardson 0-varieties in $R^0_{x,y}$ are
+    $x = (e_1, e_1 + e_2)$, 
     $x_y = (e_1, e_1+e_3)$, 
     $x^y = (e_2, e_1+e_2)$, 
     $y_x = (e_3, e_1+e_3)$,
@@ -41,11 +45,11 @@ These are explicit points in the flag variety.
     $y = (e_3, e_2 + e_3)$.  
 \end{example}
 
-For $x,y \in \F^3$ transverse, 
+Let $x,y \in \F^3$ transverse, and
 define $R^1_{x,y}$ to be irreducible 1-dimensionsal Richardson varieties.
-Similarly, these are intersections of irreducible Schubert varieties 
+Similarly, these are intersections of principle Schubert varieties 
 $\alpha(x) \cap \beta(y)$ where $dim(\alpha) + dim(\beta) = dim(\F^3) + 1$. 
-There are six such varieties, each homeomorphic to $\CP^1$, 
+There are six such 1-varieties, each homeomorphic to $\CP^1$, 
 which we distinguish using pairs of elements of $R^0_{x,y}$.
 \begin{itemize}
     \item $span(x, x_y) := \alpha_1(x) \cap \alpha_{121}(y)$,
@@ -56,12 +60,13 @@ which we distinguish using pairs of elements of $R^0_{x,y}$.
     \item $span(y^x, y) := \alpha_{121}(x) \cap \alpha_2(y)$.
 \end{itemize}
 
-These varieties are not pairwise disjoint, e.g. $\{x\} = span(x,x_y) \cap span(x,x^y)$.
+The 1-varieties are not pairwise disjoint, e.g. $\{x\} = span(x,x_y) \cap span(x,x^y)$.
 The points of intersection between 1-dimensional Richardson varieties 
 are the 0-dimensional Richardson varieties. 
 
 \begin{remark} 
-    If $x,y \in \F^3$ transverse and $dim(\alpha)+dim(\beta) < dim(\F^3)$, 
+    If $x,y \in \F^3$ transverse and 
+    $\alpha,\beta$ principle Schubert varieties such that $dim(\alpha)+dim(\beta) < dim(\F^3)$, 
     then $\alpha(x) \cap \beta(y) = \null$.
 \end{remark}
 
@@ -82,12 +87,13 @@ We use the following notation related to $\rho$ and $\rho'$.
 We call $\rho, \rho'$ \emph{topologically conjugate} if there exists a homeomorphism 
 $F:\F^3 \rightarrow \F^3$ such that for all $g \in \Gamma$ and all $x \in \F^3$, 
 then $F(\rho(g) \cdot x) = \rho'(g) \cdot F(x)$.
-We call $F$ a \emph{topological conjugacy}.
+We call $F$ the \emph{topological conjugacy} between $\rho$ and $\rho'$.
 
-TODO: definition of hyperconvexity
+Recall that $\rho$ is \emph{hyperconvex} if for all $x=(l_x, H_x),y=(l_y,H_y),z=(l_z,H_z) \in \Lambda$, 
+then $l_z \not \subset l_x + l_y$ and $(H_x \cap H_y) \not \subset H_z$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Statement of Theorem \ref{thm:hyperconvex-conjugate} and related results}
+\section{Hyperconvexity is closed under topological conjugacy}
 
 \begin{theorem}\label{thm:hyperconvex-conjugate}
     Hyperconvexity is closed under topological conjugacy. 
@@ -112,15 +118,15 @@ So for $x \in \Lambda$, we can use the notation $x' := F(x) \in \Lambda'$.
 
 Topological conjugacies may preserve the 0- and 1-dimensional Richardson varieties of 
 $\Lambda$ in one of two ways. 
-We say $F$ \emph{matches} the Richardson varieties if for all $x,y\in \Lambda^{(2)}$, 
+We say $F$ \emph{matches} Richardson varieties if for all $x,y\in \Lambda^{(2)}$, 
 then $F(x_y) = x'_{y'}$ and $F(span(x,x_y)) = span(x,x'_{y'})$.
-We say $F$ \emph{switches} the Richardson varieties if for all $x,y \in \Lambda^{(2)}$, 
+We say $F$ \emph{switches} Richardson varieties if for all $x,y \in \Lambda^{(2)}$, 
 then $F(x_y) = x'^{y'}$ and $F(span(x,x_y)) = span(x,x'^{y'})$.
 \begin{lemma}\label{lem:richardson}
     For all $x,y \in \Lambda^{(2)}$, 
     then $F (R^0_{x,y}) = R^0_{x',y'}$ 
     and $F (R^1_{x,y}) = R^1_{x',y'}$.
-    Furthermore, $F$ either matches or switches the Richardson varieties.
+    Furthermore, $F$ either matches or switches Richardson varieties.
 \end{lemma}
 
 We also have the following consequence of Lemma \ref{lem:richardson}, 
@@ -134,7 +140,8 @@ which is of independent interest:
 
 We first prove our main theorem using our supporting lemmas.
 \begin{proof}(Theorem \ref{thm:hyperconvex-conjugate})
-    Suppose $F:\F^3 \rightarrow \F^3$ is a topological conjugacy between $\rho$ and $\rho'$.
+    Suppose $F:\F^3 \rightarrow \F^3$ is a topological conjugacy between 
+    Anosov representations $\rho,\rho':\rightarrow SL_3\C$.
 
     We begin with the forward direction. 
     Assume that $\rho$ is hyperconvex. Let $x,y,z \in \Lambda^{(3)}$.
@@ -142,15 +149,16 @@ We first prove our main theorem using our supporting lemmas.
     By Lemma \ref{lem:richardson}, then the sets
     \begin{align}
         \{F(x_y), F(x^y), F(x_z), F(x^z) \} = \{x'_{y'}, x'^{y'}, x'_{z'}, x'^{z'} \}
-    \end{align} contain four distinct points.
-    Since $x,y,z$ were general, then this holds for all triples in $\Lambda$, 
+    \end{align} contain four distinct points, 
+    and in particular $x'_{y'} \neq x'_{z'}$ and $x'^{y'} \neq x'^{z'}$.
+    Since $x,y,z$ were general, then this holds for all triples in $x',y',z' \in \Lambda'$, 
     and $\rho'$ is hyperconvex.
 
     The other direction proceeds similarly. Assume that $\rho$ is \emph{not} hyperconvex. 
     By Lemma \ref{lem:hyperconvex}, there exist $x,y,z \in \Lambda^{(3)}$ such that 
     $x_y = x_z$ or $x^y = x^z$. 
     By Lemma \ref{lem:richardson}, then $F$ either matches or switches Richardson varieties.
-    So one of the following is true: $x'_{y'} = x'_{z'}$ or $x'^{y'}=x'^{z'}$. 
+    So then $x'_{y'} = x'_{z'}$ or $x'^{y'}=x'^{z'}$. 
     Therefore $\rho'$ is \emph{not} hyperconvex.
 \end{proof}
 We also prove our lemma linking Richardson 0-dimensional varieties to hyperconvexity.
@@ -374,7 +382,7 @@ then for all $x \in \Lambda$ we have $F(x_y) = x'_{y'}$ and $F(\alpha_1(x)) = \a
 Otherwise, if $F$ \emph{switches} Richardson varieties,
 then for all $x \in \Lambda$ we have $F(x_y) = x'^{y'}$ and $F(\alpha_1(x)) = \alpha_2(x')$.
 \begin{corollary}
-    $F$ either matches of switches Richardson varieties.
+    $F$ either matches or switches Richardson varieties.
 \end{corollary}
 \begin{proof}
     Suppose for some $w \in \Lambda$ we have $F(\alpha_1(w)) = \alpha_1(w')$. 
@@ -405,15 +413,19 @@ then for all $x \in \Lambda$ we have $F(x_y) = x'^{y'}$ and $F(\alpha_1(x)) = \a
 Clearly $x_y \in \alpha_1(x)$, so if $F$ matches Richardson varieties then $F(x_y) = x'_{y'}$, 
 and if $F$ switches Richardson varities then $F(x_y) = x'^{y'}$.
 
-So for all $x,y \in \Lambda$, a topological conjugacy $F$ sends $R^0_{x,y}$ to $R^0_{x',y'}$, 
-and either matches or switches the irreducible 0- and 1-dimensional Richardson varieties.
+So for all $x,y \in \Lambda$, 
+the topological conjugacy $F$ sends $R^0_{x,y}$ to $R^0_{x',y'}$, 
+sends $R^1_{x,y}$ to $R^1{x',y'}$,
+and either matches or switches Richardson varieties.
 This completes the proof of Lemma \ref{lem:richardson}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Comments}
+\section{Conjectures and future steps}
+TODO: This should probably go in a different chapter eventually.
 
 \begin{remark}
-    For $x,y \in (\F^3)^{(2)}$, $F$ will not necessarily preserve the 0-dimensional Richardson varieties.
+    For distinct $x,y \in \F^3 \setminus \Lambda$, 
+    $F$ will not necessarily preserve the 0-dimensional Richardson varieties.
 \end{remark}
 
 \begin{remark}
@@ -421,4 +433,27 @@ This completes the proof of Lemma \ref{lem:richardson}.
     e.g. $\Gamma = \pi_1(\mathcal{O}^2)$ where $\mathcal{O}^2$ is a hyperbolic 2-orbifold.
 \end{remark}
 
-TODO: What about higher dimensions?
+Conjectural picture for higher dimensions:
+
+I suspect that topological conjugacies of Borel Anosov representations will preserve 
+Richardson varieties up to $R^{n-2}_{x,y}$ organized into a cell decomposition with data an 
+$(n-1)$-valent graph where vertices correspond to 0-varieties, edges correspond to 1-varieties,
+fully connected triples correspond to 2-varieties, etc. 
+Matching/switching Richardson varieties will mean sending Richardson varieties to their dual.
+
+I think balanced ideals $I$ correspond to subgraphs of the Richardson variety graph 
+containing exactly half of the vertices. In other words, $Th^I(x) \cap Th^I(y) = \null$, and
+\begin{align}
+    (Th^I(x) \cap R^0_{x,y}) \cup (Th^I(y) \cap R^0_{x,y}) = R^0_{x,y}.
+\end{align}
+However, topological conjugacies should not depend on the choice of balanced ideal, 
+so then they determine diffeomorphisms between all types of quotient manifolds. 
+In other words, if $F:\F^n \rightarrow \F^n$ a topological conjugacy between $\rho, \rho'$, then:
+\begin{align}
+    F(M^I_\rho) = M^I_{\rho'} \text{ for all balanced ideals } I \subset W(SL_n\C).
+\end{align}
+Most importantly, I believe the conclusions of Theorem \ref{thm:hyperconvex-conjugate} will apply in higher rank:
+\begin{conjecture}
+    For $\rho,\rho':\Gamma \rightarrow SL_n\C$ Borel Anosov and topologically conjugate. 
+    Then $\rho$ hyperconvex if and only if $\rho'$ hyperconvex. 
+\end{conjecture}

@@ -1,8 +1,43 @@
 %%%%%%%%%%%%%%%%%%
 \section{Notation}
+TODO assumptions on $\rho,\rho'$
+Consider the collection of Anosov representations 
+\begin{align}
+    \mathcal{A}_\R(\Gamma) := \{\rho:\Gamma \rightarrow SL_3\R \text{ Anosov}\}\text{, and }
+    \mathcal{A}(\Gamma) := \{\rho:\Gamma \rightarrow SL_3\C \text{ Anosov}\}.
+\end{align}
+Let $\rho_0 : \Gamma \rightarrow PSL_2\R$ Fuchsian and 
+$\rho_i : \Gamma \rightarrow PSL_2\C$ quasi-Fuchsian. 
+To create Anosov representations in $SL_3\C$, 
+we can compose with an irreducible representation $\iota : PSL_2\R \rightarrow SL_3\R$:
+\begin{align}
+    \rho_{F} = \iota \circ \rho_0 : \Gamma \rightarrow SL_3\R\text{, and }
+    \rho_{QF} = \iota \circ \rho_i : \Gamma \rightarrow SL_3\C.
+\end{align}
+Similarly, (assuming that $\rho_0,\rho_i$ lift to $SL_2\R$) 
+we can compose with a reducible representation 
+$\Delta : SL_2\C \rightarrow SL_3\C$:
+\begin{align}
+    \rho_{R} = \Delta \circ \rho_0 : \Gamma \rightarrow SL_3\R\text{, and }
+    \rho_{QR} = \Delta \circ \rho_i : \Gamma \rightarrow SL_3\C.
+\end{align}
+The representations $\rho_{Fuchs}$ and $\rho_{Red}$ are Anosov. 
+We can then define the following subsets of $\mathcal{A}$:
+\begin{itemize}
+    \item $SL_3\C$ quasi-Fuchsian representations
+    $\mathcal{H}(\Gamma) := \{\rho \in \mathcal{A}(\Gamma) : \rho = \iota \circ  \text{in the same Anosov component as }\rho_0\}$
+    \item Hitchin representations 
+    $\mathcal{H}(\Gamma) := \{\rho \in \mathcal{A}_\R(\Gamma) : \rho \text{in the same Anosov component as }\rho_0\}$
+    \item Quasi-Hitchin representations
+    \item $SL_3\C$-reducible representations
+    \item Barbot representations
+    \item Quasi-Barbot representations
+\end{itemize}
+TODO define Hitchin , Barbot $\mathcal{B}$, quasi-Hitchin $\mathcal{QH}$, quasi-Barbot $\mathcal{QB}$
+TODO define domain of discontinuity
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Statement of Theorem \ref{thm:component} and related results}
+\section{Anosov components have one topological conjugacy class}
 
 \begin{theorem}\label{thm:component}
     Suppose $\rho,\rho':\Gamma \rightarrow SL_3\C$ in the same Anosov component.
@@ -17,24 +52,34 @@ Combined with Theorem \ref{thm:hyperconvex-conjugate}, we get the following coro
 \end{corollary}
 Furthermore:
 \begin{corollary}
-    The quasi-Hitchin and quasi-Barbot Anosov components are distinct.
+    The quasi-Hitchin and quasi-Barbot Anosov components are disjoint.
 \end{corollary}
 
-We also consider the topological conjugacies of reducible representations $\mathcal{A}_{red}$.
+Additionally, distinct Anosov components may have the same topological conjugacy class.
+For example, the quasi-Barbot components in $Hom(T(p,q,r),SL_3\C)$ are dual, 
+so have the same conjugacy class:
+\begin{proposition}
+    Let $\rho:\Gamma \rightarrow SL_3\C$ Anosov and let $\rho^*$ its dual.
+    Then $\rho,\rho^*$ are topologically conjugate.
+\end{proposition}
+
+We also describe the topological conjugacy classes of a reducible Anosov component 
+$\mathcal{A}_{red}(\Gamma) \subsetneq QB(\Gamma)$.
 \begin{theorem}\label{thm:reducible}
     There are exactly three topological conjugacy classes of $\mathcal{A}_{red}(\Gamma)$:
     \begin{itemize}
-        \item $[\rho_{ss}]$
-        \item $[\rho_{line}] = [\rho_{plane}]$
-        \item $[\rho_{dense}]$
+        \item The class of semisimple representations,
+        \item The class of line- or plane-reducible representations, and
+        \item The class of reducible, but neither line- nor plane-reducible representations. 
     \end{itemize}
+    Representations in the last class are topologically conjugate to the rest of their $QB(\Gamma)$ Anosov component.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Key ingredients}
+\section{Key ingredients for proof}
 
-In this section, we highlight some key results that will 
-be used in the proof of Theorem \ref{thm:component}.
+In this section, we highlight prior results that are 
+used in the proof of Theorem \ref{thm:component}.
 First, we use the following theorem of Stecker:
 \begin{theorem}[\ref{Stecker22}, Thm 3.24]\label{thm:stecker-dod}
     Let $\rho:\Gamma \rightarrow G$ Borel Anosov. 
@@ -51,14 +96,16 @@ Recall that $G=SL_3\C$, so $mbic(G)=4$ and $\F(G) = \F^3$.
 Then $W(G) = A_2$ which has exactly one balanced ideal. 
 In $SL_3\C$, all Anosov representations are Borel Anosov.
 Furthermore, we assume that $\Gamma$ is a hyperbolic surface group, so $\partial \Gamma \cong S^1$.
-Then $dim(\Lambda_\rho) \leq mbic(G) - 2 = 2$ and the condition in Theorem \ref{thm:stecker-dod} is met.
+Then $1 \leq dim(\Lambda_\rho) \leq 2$, 
+because $\xi_\rho$ is an injective and continuous function of $S^1$.
+So the condition in Theorem \ref{thm:stecker-dod} is met, and:
 \begin{remark}
     For $\Gamma$ a hyperbolic surface group and $\rho:\Gamma \rightarrow SL_3\C$ Anosov,
-    then $\Omega_\rho$ is the unique nonempty cocompact domain of discontinuity.
+    then $\rho$ has a \emph{unique} nonempty cocompact domain of discontinuity $\Omega_\rho \subset \F^3$.
     Furthermore, $\Omega_rho$ is connected and dense in $\F^3$.
 \end{remark}
 
-We also use the following lemma, proved in section
+We also use the following lemma, proved in the following section:
 \begin{lemma}\label{lem:pi1-dod}
     For $\Gamma$ a hyperbolic surface group and $\rho:\Gamma \rightarrow SL_3\C$ Anosov,
     then $\Omega_\rho$ is simply connected.
@@ -73,8 +120,9 @@ Finally, we use the following theorem of Dumas and Sanders:
     the quotient manifolds $M^I_\rho$ and $M^I_{\rho'}$ are diffeomorphic. 
 \end{theorem}
 
-Again, we tailor this theorem to our assumptions that $G = SL_3\C$,
-where there is only one balanced ideal and one .
+We again tailor this theorem to our assumptions that $G = SL_3\C$,
+where there is only symmetric parabolic subgroup and one balanced ideal in $W(G)$.
+Then:
 \begin{remark}
     For $\Gamma$ a hyperbolic surface group 
     and $\rho,\rho':\Gamma \rightarrow SL_3\C$ in the same Anosov component,
@@ -122,8 +170,94 @@ where there is only one balanced ideal and one .
     the diffeomorphism $D$ and its lift $\tilde{D}$. 
 \end{remark}
 
+\begin{proof}(Lemma \ref{lem:pi1-dod})
+    Fact: $\pi_1 \F^3$ is trivial.
+    Fact: The odd homology groups $H^{2n+1}(\Omega_\rho)$ vanishes.
+    Fact: Then $\pi_1(\Omega_\rho)$ is perfect, since $\pi_1(\Omega_\rho)^{ab} = H^1(\Omega_\rho) = \{e\}$.
 
+    Claim: First consider $\Omega_{\rho_{Fuchs}}$ where $\rho_F$ is $SL_3\C$-Fuchsian. 
+    Then $\Omega_{\rho_{Fuchs}}$ is simply connnected.
+
+    Claim: If there is a transverse homotopy between $\Lambda_{\rho_{Fuchs}}$ and $\Lambda_\rho$, 
+    then $\pi_1(\Omega_{\rho_{Fuchs}}) = \pi_1(\Omega_\rho)$.
+
+    Claim: There is a transverse homotopy between $\Lambda_{\rho_{Fuchs}}$ and $\Lambda_\rho$.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Topological conjugacies of reducible representations}
-This section contains the proof of Theorem \ref{thm:reducible}
+
+This argument for Theorem \ref{thm:reducible} hinges on whether 
+$\rho$ fixes a line and/or a plane in $\C^3$. 
+Let $\rho:\Gamma \rightarrow SL_3\C$ reducible.
+We say that $\rho$ is 
+\begin{enumerate}
+    \item \emph{semisimple} if $\rho$ fixes a line $l \in CP^2$ and a plane $H \in (CP^2)^*$,
+    \item \emph{line-reducible} if $\rho$ fixes a line $l \in CP^2$, but no plane,
+    \item \emph{plane-reducible} if $\rho$ fixes a plane $H \in (CP^2)^*$, but no line, and
+    \item \emph{neither line- nor plane-reducible} otherwise.
+\end{enumerate}
+Given $l \in \CP^2$, we use the abuse of notation
+\begin{align}
+    \alpha_1(l) := \alpha_1(l,H)
+\end{align}
+for any $H\supset l$ because $\alpha_1(l,H)$ does not depend on choice of $H$. 
+Similarly, for $H \in (\CP^2)^*$, we use the analogous abuse of notation
+\begin{align}
+\alpha_2(H) := \alpha_2(l,H)$ for some $l \subset H.
+\end{align}
+
+If $\rho$ is semisimple, then for all $x,y,z \in \Lambda_\rho^{(3)}$ we have
+$x_y = x_z$, $y_x = y_z$, $z_x=z_y$, and $x^y = x^z$, $y^x = y^z$, $z^x = z^y$. 
+So $\rho$ fixes the line $l = l_{x^y}$ and the plane $H=H_{x_y}$. 
+This means that the following sets are invariant under $\rho$:
+\begin{align}
+    \alpha_1(l) = span(x_y,y_x) = span(x_z,z_x) = span(y_z,z_y)\text{, and }\\
+    \alpha_2(H) = span(x^y,y^x) = span(x^z,z^x) = span(y^z,z^y).
+\end{align}
+
+Similarly, if $\rho$ is line-reducible (but not semisimmple), 
+then all $x^y = x^z$, $y^x=y^z$, $z^x=z^y$ but not all $x_y=x_z$.
+So $\rho$ also fixes the line $l = l_{x^y}$, so the following set is invariant under $\rho$:
+\begin{align}
+    \alpha_1(l) = span(x^y,y^x)=span(x^z,z^x)=span(y_z,z_y).
+\end{align}
+
+If $\rho$ is plane-reducible (but not semisimple), 
+then for all $x,y,z \in \Lambda_\rho^{(3)}$ we have
+$x_y = x_z$, $y_x = y_z$, $z_y=z_x$, but not all $x^y = x^z$.
+So $\rho$ fixes the plane $H = H_{x_y}$, so the following set is invariant under $\rho$:
+\begin{align}
+    \alpha_2(H) = span(x_y,y_x)=span(x_z,z_x)=span(y_z,z_y).
+\end{align}
+
+Finally, if $\rho$ is neither line- nor plane-reducible,
+then $\rho$ fixes no complex line or plane in $\C^3$.
+\begin{proof}(Theorem \ref{thm:reducible})
+If $\rho,\rho'$ are in the same representation conjugacy class
+and have the same reducible type, then they are topologically conjugate.
+
+Now we consider pairs $\rho,\rho' \in \overline{[\rho]}$ with different reducible types. 
+
+Semisimple representations are only topologically conjugate to other
+semisimple representations.
+
+Since line-reducible and plane-reducible representations
+but fix a complex line in $\Omega_\rho$, 
+then they can be topologically conjugate.
+
+Finally, if $\rho$ is neither line- nor plane-reducible, 
+then it does not fix any complex line in $\Omega_\rho$, 
+and is therefore not topologically conjugate to other reducible types. 
+However, it is topologically conjugate to other
+irreducible representations in the same Anosov component.
+\end{proof}
+
+We also gain the following corollary, 
+which is immediate from the proof of the Theorem and Lemma \ref{lem:richardson}:
+\begin{corollary}
+    Suppose $F$ a topological conjugacy between $\rho$ line-reducible and some reducible $\rho'$.
+    If $\rho'$ line-irreducible, then $F$ matches Richardson varieties.
+    Otherwise $\rho'$ is plane-irreducible and $F$ switches Richardson varieties.
+\end{corollary}
+
