@@ -1,47 +1,16 @@
-%%%%%%%%%%%%%%%%%%
-\section{Notation}
+\section{Assumptions and notation}
 TODO assumptions on $\rho,\rho'$
-Consider the collection of Anosov representations 
-\begin{align}
-    \mathcal{A}_\R(\Gamma) := \{\rho:\Gamma \rightarrow SL_3\R \text{ Anosov}\}\text{, and }
-    \mathcal{A}(\Gamma) := \{\rho:\Gamma \rightarrow SL_3\C \text{ Anosov}\}.
-\end{align}
-Let $\rho_0 : \Gamma \rightarrow PSL_2\R$ Fuchsian and 
-$\rho_i : \Gamma \rightarrow PSL_2\C$ quasi-Fuchsian. 
-To create Anosov representations in $SL_3\C$, 
-we can compose with an irreducible representation $\iota : PSL_2\R \rightarrow SL_3\R$:
-\begin{align}
-    \rho_{F} = \iota \circ \rho_0 : \Gamma \rightarrow SL_3\R\text{, and }
-    \rho_{QF} = \iota \circ \rho_i : \Gamma \rightarrow SL_3\C.
-\end{align}
-Similarly, (assuming that $\rho_0,\rho_i$ lift to $SL_2\R$) 
-we can compose with a reducible representation 
-$\Delta : SL_2\C \rightarrow SL_3\C$:
-\begin{align}
-    \rho_{R} = \Delta \circ \rho_0 : \Gamma \rightarrow SL_3\R\text{, and }
-    \rho_{QR} = \Delta \circ \rho_i : \Gamma \rightarrow SL_3\C.
-\end{align}
-The representations $\rho_{Fuchs}$ and $\rho_{Red}$ are Anosov. 
-We can then define the following subsets of $\mathcal{A}$:
-\begin{itemize}
-    \item $SL_3\C$ quasi-Fuchsian representations
-    $\mathcal{H}(\Gamma) := \{\rho \in \mathcal{A}(\Gamma) : \rho = \iota \circ  \text{in the same Anosov component as }\rho_0\}$
-    \item Hitchin representations 
-    $\mathcal{H}(\Gamma) := \{\rho \in \mathcal{A}_\R(\Gamma) : \rho \text{in the same Anosov component as }\rho_0\}$
-    \item Quasi-Hitchin representations
-    \item $SL_3\C$-reducible representations
-    \item Barbot representations
-    \item Quasi-Barbot representations
-\end{itemize}
-TODO define Hitchin , Barbot $\mathcal{B}$, quasi-Hitchin $\mathcal{QH}$, quasi-Barbot $\mathcal{QB}$
-TODO define domain of discontinuity
+
+Recall the set of Anosov representations $\mathcal{A}(\Gamma)$,
+the quasi-Hitchin representations $\mathcal{QH}(\Gamma)$
+and the quasi-Barbot representations $\mathcal{QB}(\Gamma)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Anosov components have one topological conjugacy class}
 
 \begin{theorem}\label{thm:component}
-    Suppose $\rho,\rho':\Gamma \rightarrow SL_3\C$ in the same Anosov component.
-    Suppose furthermore that $\rho$ and $\rho'$ are irreducible.
+    Suppose $\rho,\rho':\Gamma \rightarrow SL_3\C$ are irreducible representations
+    in the same Anosov component.
     Then $\rho, \rho'$ are topologically conjugate.
 \end{theorem}
 
@@ -53,6 +22,10 @@ Combined with Theorem \ref{thm:hyperconvex-conjugate}, we get the following coro
 Furthermore:
 \begin{corollary}
     The quasi-Hitchin and quasi-Barbot Anosov components are disjoint.
+\end{corollary}
+
+\begin{corollary}
+    The collection of hyperconvex representations is open and closed in $\mathcal{A}(\Gamma)$.
 \end{corollary}
 
 Additionally, distinct Anosov components may have the same topological conjugacy class.
