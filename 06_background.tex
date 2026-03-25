@@ -103,7 +103,7 @@ Given two tranverse flags, the Richardson 0-varieties may be computed explicitly
     $y = (e_3, e_2 + e_3)$.  
 \end{example}
 
-\subsection{Richardson 1-varieties}
+\subsection{Richardson 1-varieties}\label{sec:r1}
 Let $x,y \in \F^3$ transverse, and define 
 $R^1_{x,y}$ to be their irreducible \emph{1-dimensional Richardson varieties}.
 These are nonempty intersections between principle Schubert varieties 
@@ -123,7 +123,7 @@ which we distinguish using pairs of elements of $R^0_{x,y}$.
 The 1-varieties are not pairwise disjoint, e.g. $\{x\} = span(x,x_y) \cap span(x,x^y)$.
 The intersections of adjacent Richardson 1-varieties are exactly the Richardson 0-varieties. 
 The connectivity of the 0- and 1-varieties is cyclic in the following way:
-\begin{align}
+\begin{align}\label{eqn:r0r1-graph}
     x \in span(x, x_y) \ni x_y \in span(x_y,y_x) \ni y_x \in span(y,y_x) \ni y \\
     x \in span(x, x^y) \ni x^y \in span(x^y,y^x) \ni y^x \in span(y,y^x) \ni y.
 \end{align}

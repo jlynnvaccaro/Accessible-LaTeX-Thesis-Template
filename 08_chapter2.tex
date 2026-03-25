@@ -1,9 +1,11 @@
 \section{Assumptions and notation}
-TODO assumptions on $\rho,\rho'$
+TODO assumptions on $\rho,\rho'$.
 
 Recall the set of Anosov representations $\mathcal{A}(\Gamma)$,
 the quasi-Hitchin representations $\mathcal{QH}(\Gamma)$
 and the quasi-Barbot representations $\mathcal{QB}(\Gamma)$.
+
+Recall irreducible representations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Anosov components have one topological conjugacy class}
@@ -28,16 +30,16 @@ Furthermore:
     The collection of hyperconvex representations is open and closed in $\mathcal{A}(\Gamma)$.
 \end{corollary}
 
-Additionally, distinct Anosov components may have the same topological conjugacy class.
-For example, the quasi-Barbot components in $Hom(T(p,q,r),SL_3\C)$ are dual, 
-so have the same conjugacy class:
+We observe that distinct Anosov components may share a single topological conjugacy class.
+For example, the quasi-Barbot components in $Hom(T(p,q,r),SL_3\C)$ are disjoint.
+However, they are dual, so have the same conjugacy class:
 \begin{proposition}
     Let $\rho:\Gamma \rightarrow SL_3\C$ Anosov and let $\rho^*$ its dual.
     Then $\rho,\rho^*$ are topologically conjugate.
 \end{proposition}
 
-We also describe the topological conjugacy classes of a reducible Anosov component 
-$\mathcal{A}_{red}(\Gamma) \subsetneq QB(\Gamma)$.
+We also describe the topological conjugacy classes of the connected components of 
+reducible Anosov representations $\mathcal{A}_{red}(\Gamma) \subsetneq QB(\Gamma)$.
 \begin{theorem}\label{thm:reducible}
     There are exactly three topological conjugacy classes of $\mathcal{A}_{red}(\Gamma)$:
     \begin{itemize}
@@ -45,7 +47,8 @@ $\mathcal{A}_{red}(\Gamma) \subsetneq QB(\Gamma)$.
         \item The class of line- or plane-reducible representations, and
         \item The class of reducible, but neither line- nor plane-reducible representations. 
     \end{itemize}
-    Representations in the last class are topologically conjugate to the rest of their $QB(\Gamma)$ Anosov component.
+    Representations in the last class are topologically conjugate 
+    to the irreducible representations in the same component of $QB(\Gamma)$.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,7 +137,7 @@ Then:
     using sequences in $\Omega_\rho$ which limit to points in $Th(\Gamma)$. 
 
     TODO check thet $F$ is a topological conjugacy.
-    TODO where do we use irreducible?
+    TODO where do we use irreducible? Probably in the checking $F$ top conj
 \end{proof}
 
 \begin{remark}
@@ -145,8 +148,9 @@ Then:
 
 \begin{proof}(Lemma \ref{lem:pi1-dod})
     Fact: $\pi_1 \F^3$ is trivial.
-    Fact: The odd homology groups $H^{2n+1}(\Omega_\rho)$ vanishes.
-    Fact: Then $\pi_1(\Omega_\rho)$ is perfect, since $\pi_1(\Omega_\rho)^{ab} = H^1(\Omega_\rho) = \{e\}$.
+    Fact: The odd homology groups $H^{2n+1}(\Omega_\rho)$ vanish.
+    Fact: Then $\pi_1(\Omega_\rho)$ is perfect, 
+    since $\pi_1(\Omega_\rho)^{ab} = H^1(\Omega_\rho) = \{Id\}$.
 
     Claim: First consider $\Omega_{\rho_{Fuchs}}$ where $\rho_F$ is $SL_3\C$-Fuchsian. 
     Then $\Omega_{\rho_{Fuchs}}$ is simply connnected.
