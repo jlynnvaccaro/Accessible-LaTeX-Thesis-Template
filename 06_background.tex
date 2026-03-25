@@ -35,12 +35,15 @@ We can then define the following subsets of $\mathcal{A}$:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Richardson varieties in $\F^3$}
-TODO: This maybe belongs in an introduction / background section instead.
+\section{The subvarieties of $\F^3$}
 
-For any flag $x \in \F^3$, we define $Sch(x)$ the principle Schubert varieties associated with $x$. 
-Let $x = (l, H)$ where $l \in \CP^2$ and $H \in (\CP^2)^*$ such that $l_x \subset H_x$.
-We distinguish the elements of $Sch(x)$ using elements of the Weyl group $W(SL_3\C)$ as follows:
+\subsection{Richardson varieties in $\F^3$}
+For any flag $x \in \F^3$, we define $Sch(x)$ to be the \emph{principle Schubert varieties} 
+centered at $x$.
+These are the closure of the principle Schubert cells, 
+each identified by an element of the Weyl group $W(G) = A_2 = Sym(3)$. 
+Let $x = (l, H) \in \F^3$ where $l \in \CP^2$ and $H \in (\CP^2)^*$ such that $l \subset H$.
+Then $Sch(x)$ consists of:
 \begin{itemize}
     \item $\alpha_{Id}(x) = \{ (l, H) \} = \{x\}$,
     \item $\alpha_1(x) = \{ (l, H_l) : l \subset H_l \}$,
@@ -49,30 +52,49 @@ We distinguish the elements of $Sch(x)$ using elements of the Weyl group $W(SL_3
     \item $\alpha_{21}(x) = \{ (l_H, G) : l_H \subset H \}$, and
     \item $\alpha_{121}(x) = \alpha_{212}(x) = \F^3$.
 \end{itemize}
-The principle Schubert varieties are closed, and have complex dimensions $(0,1,1,2,2,3)$, respectively.
+We also define $Sch$ as the \emph{types} of principle Schubert varieties,
+e.g. $\alpha_1$ or $\alpha_2$, without specifying a basepoint $x$.
+For $g \in W(G)$, the complex dimension of $\alpha_g \in Sch$ is length of $g$ in the Bruhat order. 
+More explicitly, 
+$dim(\alpha_{Id}) = 0$, 
+$dim(\alpha_1) = dim(\alpha_2) = 1$,
+$dim(\alpha_{12}) = dim(\alpha_{21}) = 2$, 
+and $dim(\alpha_{121}) = 3$.
 
 We call a pair of flags $x,y \in \F^3$ \emph{transverse} if they are in general position, 
 meaning that for any proper, principle Schubert variety $\alpha$, 
 then $x \not \in \alpha(y)$ and $y \not \in \alpha(x)$.
 
+For distinct flags $x,y \in \F^3$ such that either $l_x = l_y$ or $H_x = H_y$,
+then we define the \emph{span} of $x$ and $y$ as follows:
+\begin{align}
+    span(x,y) := \begin{cases}
+        \alpha_1(x) = \alpha_1(y) : l_x = l_y \\
+        \alpha_2(x) = \alpha_2(y) : H_x = H_y.
+    \end{cases}
+\end{align}
+
+\subsection{Richardson 0-varieties}
+\emph{TODO: define Richardson variety more generally, then specialize to irreducible 0-varieties and irreducible 1-varieties.}
+
 Let $x,y \in \F^3$ transverse. 
-Define $R^0_{x,y}$ to be their irreducible 0-dimensional Richardson varieties, 
-which are the intersections between principle Schubert varieties $\alpha(x) \cap \beta(y)$ 
-where $dim(\alpha) + dim(\beta) = dim(\F^3)$.
+Define $R^0_{x,y}$ to be their irreducible \emph{0-dimensional Richardson varieties}, 
+which are the nonempty intersections between principle Schubert varieties 
+$\alpha(x) \cap \beta(y)$ for $\alpha,\beta \in Sch$ such that $dim(\alpha) + dim(\beta) = dim(\F^3)$.
 There are exactly six such varieties $\{x, x_y, x^y, y_x, y^x, y\}$, where:
     \begin{itemize}
-        \item $x := \{x\} \cap \alpha_{121}(y)$,
+        \item $x := \alpha_{Id}(x) \cap \alpha_{121}(y)$,
         \item $x_y := \alpha_1(x) \cap \alpha_{12}(y)$,
         \item $x^y := \alpha_2(x) \cap \alpha_{21}(y)$,
         \item $y_x := \alpha_{12}(x) \cap \alpha_1(y)$,
         \item $y^x := \alpha_{21}(x) \cap \alpha_2(y)$, and
-        \item $y := \alpha_{121}(x) \cap \{y\}$.
+        \item $y := \alpha_{121}(x) \cap \alpha_{Id}(y)$.
     \end{itemize}
-Given two tranverse flags, the Richardson 0-varieties can be computed explicitly:
+Given two tranverse flags, the Richardson 0-varieties may be computed explicitly.
 \begin{example}\label{eg:r0}
     Choose $x$ and $y$ are the attracting and repelling flags of 
     $\rho(g) = diag(\lambda, \mu, \nu)$ where $|\lambda| > |\mu| > |\nu|$.
-    Then the six Richardson 0-varieties in $R^0_{x,y}$ are
+    Then the six Richardson 0-varieties of $x$ and $y$ are
     $x = (e_1, e_1 + e_2)$, 
     $x_y = (e_1, e_1+e_3)$, 
     $x^y = (e_2, e_1+e_2)$, 
@@ -81,10 +103,12 @@ Given two tranverse flags, the Richardson 0-varieties can be computed explicitly
     $y = (e_3, e_2 + e_3)$.  
 \end{example}
 
-Let $x,y \in \F^3$ transverse, and
-define $R^1_{x,y}$ to be irreducible 1-dimensionsal Richardson varieties.
-Similarly, these are intersections of principle Schubert varieties 
-$\alpha(x) \cap \beta(y)$ where $dim(\alpha) + dim(\beta) = dim(\F^3) + 1$. 
+\subsection{Richardson 1-varieties}
+Let $x,y \in \F^3$ transverse, and define 
+$R^1_{x,y}$ to be their irreducible \emph{1-dimensional Richardson varieties}.
+These are nonempty intersections between principle Schubert varieties 
+$\alpha(x) \cap \beta(y)$ for
+$\alpha,\beta \in Sch$ such that $dim(\alpha) + dim(\beta) = dim(\F^3) + 1$. 
 There are six such 1-varieties, each homeomorphic to $\CP^1$, 
 which we distinguish using pairs of elements of $R^0_{x,y}$.
 \begin{itemize}
@@ -97,13 +121,29 @@ which we distinguish using pairs of elements of $R^0_{x,y}$.
 \end{itemize}
 
 The 1-varieties are not pairwise disjoint, e.g. $\{x\} = span(x,x_y) \cap span(x,x^y)$.
-The points of intersection between 1-dimensional Richardson varieties 
-are the 0-dimensional Richardson varieties. 
+The intersections of adjacent Richardson 1-varieties are exactly the Richardson 0-varieties. 
+The connectivity of the 0- and 1-varieties is cyclic in the following way:
+\begin{align}
+    x \in span(x, x_y) \ni x_y \in span(x_y,y_x) \ni y_x \in span(y,y_x) \ni y \\
+    x \in span(x, x^y) \ni x^y \in span(x^y,y^x) \ni y^x \in span(y,y^x) \ni y.
+\end{align}
+Equivalently, in Figure \ref{fig:r0r1-graph} 
+we describe the connectivity using a graph with 
+six vertices representing 0-varieties and 
+six edges representing 1-varieties.
+Two vertices are connected if the span of their 0-varieties is an irreducible 1-variety.
+\begin{figure}\label{fig:r0r1-graph}
+    \centering
+    \includegraphics[alt="Graph representing the cyclic connectivity of Richardson 0- and 1-varieties for $x$ and $y$ transverse",scale=0.6]{FIG/r0r1-graph.png}
+    \caption{Graph representing the cyclic connectivity of Richardson 0- and 1-varieties for $x$ and $y$ transverse.}
+\end{figure}
 
 \begin{remark} 
-    If $x,y \in \F^3$ transverse and 
-    $\alpha,\beta$ principle Schubert varieties such that $dim(\alpha)+dim(\beta) < dim(\F^3)$, 
-    then $\alpha(x) \cap \beta(y) = \null$.
+    If $x,y \in \F^3$ transverse and $\alpha,\beta \in Sch$ such that 
+    \begin{align}
+        dim(\alpha)+dim(\beta) < dim(\F^3),
+    \end{align}
+    then $\alpha(x) \cap \beta(y) = \emptyset$.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,7 +158,7 @@ fully connected triples correspond to 2-varieties, etc.
 Matching/switching Richardson varieties will mean sending Richardson varieties to their dual.
 
 I think balanced ideals $I$ correspond to subgraphs of the Richardson variety graph 
-containing exactly half of the vertices. In other words, $Th^I(x) \cap Th^I(y) = \null$, and
+containing exactly half of the vertices. In other words, $Th^I(x) \cap Th^I(y) = \emptyset$, and
 \begin{align}
     (Th^I(x) \cap R^0_{x,y}) \cup (Th^I(y) \cap R^0_{x,y}) = R^0_{x,y}.
 \end{align}
