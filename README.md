@@ -1,3 +1,7 @@
+# Updates
+
+This repo is Jennifer Vaccaro's PhD thesis, made using the template described below.
+
 # Accessible-LaTeX-Thesis-Template
 A LaTeX thesis template based on amsbook class aimed at assisting authors in writing documents that can be converted to to accessible epub files.  Consider this as beta.  It is designed to be used with both standard pdflatex/lualatex and [LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/).
 
